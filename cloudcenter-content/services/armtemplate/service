@@ -1,0 +1,34 @@
+#!/bin/bash
+. /utils.sh
+
+env
+
+cmd=$1
+serviceStatus=""
+
+# Setup a bunch of prerequisits
+yum install gcc git python-pip python-devel openssl-devel libffi-devel -y
+pip install --upgrade pip
+pip install msrest msrestazure
+pip install --pre azure 
+
+#Random sed thing to fix tiny error in msrest library. I don't think it's needed anymore.
+#sed -i -re "s/len\(self.data\)/str\(len\(self.data\)\)/g" /usr/lib/python2.7/site-packages/msrest/pipeline.py
+
+
+wget -N https://raw.githubusercontent.com/datacenter/cloudcenter-content/master/services/armtemplate/armtemplate.py
+
+case $cmd in
+	start)
+		python armtemplate.py start
+		serviceStatus="Started"
+		;;
+	stop)
+		python armtemplate.py stop
+		serviceStatus="Stopped"
+		;;
+	*)
+		serviceStatus="No Valid Script Argument"
+		exit 127
+		;;
+esac

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+. /utils.sh
+
+print_log "Installing python-pip"
+yum install -y python-pip
+print_log "Upgrading python-pip"
+pip install pip --upgrade
+print_log "Installing requests"
+yum install -y requests
+print_log "Installing python2.7-elementtree"
+yum install -y python2.7-elementtree
+print_log "Installing pan-python"
+pip install pan-python
+
+print_log "Downloading and executing service-pan.py"
+curl -O https://raw.githubusercontent.com/datacenter/cloudcenter-content/${panext_gitTag}/services/panext/service-pan.py
+python service-pan.py $1

@@ -1,0 +1,129 @@
+{
+  "displayName": "Kubernetes",
+  "repositories": [],
+  "parentServiceId": "48",
+  "serviceActions": [],
+  "bundleLocation": "",
+  "images": [],
+  "serviceParamSpecs": [
+    {
+      "scope": null,
+      "displayName": "YAML File",
+      "helpText": "URL of YAML file that you want to deploy.",
+      "valueList": null,
+      "paramName": "kube_yaml",
+      "valueConstraint": {
+        "maxLength": 255,
+        "sizeValue": 0,
+        "calloutWorkflowName": null,
+        "step": 0,
+        "minValue": 0,
+        "maxValue": 0,
+        "regex": null,
+        "allowSpaces": false
+      },
+      "userEditable": true,
+      "optional": false,
+      "userVisible": true,
+      "systemParam": true,
+      "type": "string",
+      "defaultValue": "https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml",
+      "collectionList": [],
+      "dataUnit": null,
+      "webserviceListParams": null,
+      "confirmValue": "",
+      "pathSuffixValue": "",
+      "exampleValue": null
+    },
+    {
+      "scope": null,
+      "displayName": "Config File",
+      "helpText": "Your kubernetes config file. Paste it here.",
+      "valueList": null,
+      "paramName": "kube_config",
+      "valueConstraint": {
+        "maxLength": 255,
+        "sizeValue": 0,
+        "calloutWorkflowName": null,
+        "step": 0,
+        "minValue": 0,
+        "maxValue": 0,
+        "regex": null,
+        "allowSpaces": true
+      },
+      "userEditable": true,
+      "optional": false,
+      "userVisible": true,
+      "systemParam": true,
+      "type": "textarea",
+      "defaultValue": "",
+      "collectionList": [],
+      "dataUnit": null,
+      "webserviceListParams": null,
+      "confirmValue": "",
+      "pathSuffixValue": "",
+      "exampleValue": null
+    },
+    {
+      "scope": null,
+      "displayName": "Git Tag",
+      "helpText": "Tag or Branch you want to use code from.",
+      "valueList": null,
+      "paramName": "gitTag",
+      "valueConstraint": {
+        "maxLength": 255,
+        "sizeValue": 0,
+        "calloutWorkflowName": null,
+        "step": 0,
+        "minValue": 0,
+        "maxValue": 0,
+        "regex": null,
+        "allowSpaces": true
+      },
+      "userEditable": true,
+      "optional": false,
+      "userVisible": true,
+      "systemParam": true,
+      "type": "string",
+      "defaultValue": "kube1.0",
+      "collectionList": [],
+      "dataUnit": null,
+      "webserviceListParams": null,
+      "confirmValue": "",
+      "pathSuffixValue": "",
+      "exampleValue": null
+    }
+  ],
+  "externalBundleLocation": "",
+  "parentService": false,
+  "servicePorts": [],
+  "systemService": false,
+  "description": "",
+  "visible": true,
+  "egressRestrictions": [],
+  "defaultImageName": null,
+  "serviceType": "EXTERNAL",
+  "externalActions": [
+    {
+      "actionName": "START",
+      "actionType": "URL",
+      "actionValue": "https://raw.githubusercontent.com/datacenter/cloudcenter-content/%gitTag%/services/kubernetes/kube.sh start"
+    },
+    {
+      "actionName": "STOP",
+      "actionType": "URL",
+      "actionValue": "https://raw.githubusercontent.com/datacenter/cloudcenter-content/%gitTag%/services/kubernetes/kube.sh stop"
+    }
+  ],
+  "perms": [
+    "write",
+    "read",
+    "administration",
+    "delete"
+  ],
+  "costPerHour": 0.0,
+  "logoPath": "/assets/img/appTiers/swarm/logo.png",
+  "childServices": [],
+  "name": "kubernetes",
+  "externalService": false
+}
